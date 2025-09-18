@@ -23,7 +23,7 @@ export default function Atualizar() {
       return;
     }
 
-    fetch(`${API_URL}/clientes/${id}`)
+    fetch(`${API_URL}/clientes/${parseInt(id)}`) //converte id pra inteiro pq o banco espera um int
       .then((res) => {
         if (!res.ok) throw new Error("Cliente não encontrado");
         return res.json();
@@ -58,7 +58,7 @@ export default function Atualizar() {
       },
       body: JSON.stringify({
         Nome: nome,
-        Idade: idade,
+        Idade: parseInt(idade),
         UF: uf,
       }),
     })

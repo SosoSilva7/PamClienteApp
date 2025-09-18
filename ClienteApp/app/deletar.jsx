@@ -14,14 +14,16 @@ export default function Deletar() {
   const [id, setId] = useState("");
 
   const handleDelete = () => {
+    console.log("Atualizando cliente:", id); // <<< teste
     if (!id) {
       Alert.alert("Erro", "Informe um ID válido!");
       return;
     }
 
-    fetch(`${API_URL}/clientes/${id}`, {
-      method: "DELETE",
-    })
+    fetch(`${API_URL}/clientes/${parseInt(id)}`, {
+  method: "DELETE",
+})//converte id pra inteiro pq o banco espera um int
+
       .then((res) => {
         if (res.ok) {
           Alert.alert("Sucesso", "Cliente deletado com sucesso!");
